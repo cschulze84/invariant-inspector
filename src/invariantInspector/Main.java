@@ -11,8 +11,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("InvariantInspector.fxml"));
-			Scene scene = new Scene(root,400,400);
+			FXMLLoader loader = new FXMLLoader();
+			BorderPane root = (BorderPane)loader.load(getClass().getResource("InvariantInspector.fxml").openStream());
+			InvariantInspectorController controller = (InvariantInspectorController) loader.getController();
+			controller.setPrimaryStage(primaryStage);
+			Scene scene = new Scene(root,1280,800);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="invariantInspector.InvariantInspectorTabController">
+   <right>
+      <VBox>
+         <children>
+            <Accordion maxWidth="400.0" minWidth="300.0" BorderPane.alignment="CENTER">
+              <panes>
+                <TitledPane animated="false" text="Variable Filter">
+                     <content>
+                        <VBox>
+                           <children>
+                              <Label text="LHS" />
+                              <ListView fx:id="lhsVariableFilter" />
+                              <Label text="RHS" />
+                              <ListView fx:id="rhsVariableFilter" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                <TitledPane animated="false" text="Range Filter">
+                     <content>
+                        <ListView fx:id="rangeFilter" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <TitledPane animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Invariants" BorderPane.alignment="CENTER">
+         <content>
+            <TableView fx:id="invariants" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="lhs" prefWidth="359.0" text="LHS" />
+                <TableColumn fx:id="arrow" minWidth="0.0" prefWidth="47.0" />
+                  <TableColumn fx:id="rhs" minWidth="0.0" prefWidth="390.0" text="RHS" />
+              </columns>
+            </TableView>
+         </content>
+      </TitledPane>
+   </center>
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="filter" mnemonicParsing="false" onAction="#filter" text="Filter" />
+        </items>
+      </ToolBar>
+   </top>
+</BorderPane>
