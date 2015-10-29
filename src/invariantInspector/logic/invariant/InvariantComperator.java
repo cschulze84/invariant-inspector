@@ -9,20 +9,21 @@ public class InvariantComperator {
 	int equal = 0;
 	int missing = 0;
 	int extraI = 0;
-	int completeness = 0;
+	double completeness = 0;
 	
 	boolean found = false;
 	for (Invariant dataCompare : toCompare) {
 		for (Invariant dataGolden : golden) {
 			if (dataCompare.isTheSame(dataGolden)) {
-				equal++;
 				found = true;
+				break;
 			}
 		}
 		if(!found){
 			extra.add(dataCompare);
 		}
 		else{
+			equal++;
 			if(common != null){
 				common.add(dataCompare);
 			}
@@ -37,7 +38,7 @@ public class InvariantComperator {
 		completeness = 0;
 	}
 	else{
-		completeness = golden.size() / equal;
+		completeness = (double) equal / (double) golden.size();
 	}
 	
 	System.out.println("Completeness: " + completeness);

@@ -23,7 +23,7 @@
                         </VBox>
                      </content>
                   </TitledPane>
-                <TitledPane animated="false" text="Range Filter">
+                <TitledPane animated="false" expanded="false" text="Range Filter">
                      <content>
                         <ListView fx:id="rangeFilter" prefHeight="200.0" prefWidth="200.0" />
                      </content>

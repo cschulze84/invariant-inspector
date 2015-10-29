@@ -1,15 +1,15 @@
 package invariantInspector.model.gui;
 
+import invariantInspector.model.Variable;
+import invariantInspector.model.VariableSelected;
+import invariantInspector.model.invariants.Invariant;
+import invariantInspector.model.invariants.InvariantValue;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import invariantInspector.model.Variable;
-import invariantInspector.model.VariableSelected;
-import invariantInspector.model.invariants.InvariantValue;
-import invariantInspector.model.invariants.Invariant;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 
 public class InvariantInspectorModel {
 	private ObservableList<Invariant> invariants = FXCollections.observableArrayList();
@@ -49,6 +49,24 @@ public class InvariantInspectorModel {
 		for (String string : tempsetRHS) {
 			VariableSelected variable = new VariableSelected(new Variable(string));
 			rhsVariables.add(variable);
+		}
+		
+		for (Invariant invariant : invariants) {
+			for (InvariantValue inputs : invariant.getInputs()) {
+				for (VariableSelected variable : lhsVariables) {
+					if(inputs.getName().equalsIgnoreCase(variable.getVariable().name.get())){
+						variable.getVariable().addCount();
+					}
+				}
+			}
+			
+			for (InvariantValue outputs : invariant.getOutputs()) {
+				for (VariableSelected variable : rhsVariables) {
+					if(outputs.getName().equalsIgnoreCase(variable.getVariable().name.get())){
+						variable.getVariable().addCount();
+					}
+				}
+			}
 		}
 	}
 }

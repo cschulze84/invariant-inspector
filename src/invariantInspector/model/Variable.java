@@ -5,6 +5,7 @@ import javafx.beans.property.StringProperty;
 
 public class Variable {
 	public StringProperty name = new SimpleStringProperty();
+	public int occurence = 0;
 	
 	public Variable(String name) {
 		this.name.set(name);
@@ -19,5 +20,9 @@ public class Variable {
 			return false;
 		}
 		
+	}
+
+	public void addCount() {
+		occurence++;
 	}
 }

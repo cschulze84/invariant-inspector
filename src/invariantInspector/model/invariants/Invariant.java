@@ -25,8 +25,16 @@ public class Invariant implements Comparable<Invariant> {
 
 	private String getListAsString(List<InvariantValue> values) {
 		String string = new String();
+		boolean first = true;
 		for (InvariantValue implicationValue : values) {
-			string += implicationValue.toString() + " ";
+			if(first){
+				string += implicationValue.toString();
+				first = false;
+			}
+			else{
+				string += " ^ " + implicationValue.toString();
+			}
+			
 		}
 		return string;
 	}
@@ -178,6 +186,7 @@ public class Invariant implements Comparable<Invariant> {
 			for (InvariantValue value : data.inputs) {
 				if(inputValueToCompare.equalsComplete(value)){
 					found =  true;
+					break;
 				}
 			}
 			if(!found){
@@ -189,6 +198,7 @@ public class Invariant implements Comparable<Invariant> {
 			for (InvariantValue value : data.outputs) {
 				if(outputValueToCompare.equalsComplete(value)){
 					found =  true;
+					break;
 				}
 			}
 			if(!found){

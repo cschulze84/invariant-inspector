@@ -2,8 +2,6 @@ package invariantInspector.model;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public class VariableSelected {
 	public BooleanProperty selected;
@@ -31,6 +29,6 @@ public class VariableSelected {
 	
 	@Override
 	public String toString() {
-		return variable.name.get();
+		return variable.name.get() + ": " + variable.occurence;
 	}
 }

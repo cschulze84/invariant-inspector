@@ -9,7 +9,7 @@
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <Button fx:id="comparisonButton" mnemonicParsing="false" text="Comparison" />
+          <Button fx:id="comparisonButton" mnemonicParsing="false" onAction="#handleComparisonButton" text="Comparison" />
             <Button fx:id="inspectionButton" mnemonicParsing="false" onAction="#handleInspectionButton" text="Inspection" />
         </items>
       </ToolBar>
