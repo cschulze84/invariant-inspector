@@ -35,24 +35,53 @@ public class InvariantParser {
 	}
 	
 	public void parse(File selectedFile, List<Invariant> list){
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(selectedFile));
-			for(String line; (line = br.readLine()) != null; ) {
-				line = line.trim();
-				if(line.isEmpty()){
-					continue;
-				}
+		if(selectedFile.getName().endsWith(".csv")){
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(selectedFile));
 				
-				Invariant dataPoint = Invariant.parse(line);
-				list.add(dataPoint);
-				//System.out.println(dataPoint);
+				String header = br.readLine();
+				
+				String[] headerList = header.split(",");
+				
+				for(String line; (line = br.readLine()) != null; ) {
+					line = line.trim();
+					if(line.isEmpty()){
+						continue;
+					}
+					
+					Invariant dataPoint = Invariant.parseCSV(line,headerList);
+					list.add(dataPoint);
+					//System.out.println(dataPoint);
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		else{
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(selectedFile));
+				for(String line; (line = br.readLine()) != null; ) {
+					line = line.trim();
+					if(line.isEmpty()){
+						continue;
+					}
+					
+					Invariant dataPoint = Invariant.parse(line);
+					list.add(dataPoint);
+					//System.out.println(dataPoint);
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }

@@ -42,8 +42,8 @@ public class InvariantInspectorController {
 		List<Invariant> invariants1 = new ArrayList<>();
 		List<Invariant> invariants2 = new ArrayList<>();
 		
-		File file1 = new File("C:\\Users\\Christoph\\OneDrive\\newAnalysis\\invariant1\\invariantsPruned.txt");
-		File file2 = new File("C:\\Users\\Christoph\\OneDrive\\newAnalysis\\invariant2\\invariantsPruned.txt");
+		File file1 = new File("C:\\Users\\Christoph\\OneDrive\\newAnalysis\\invariant1\\invariants.txt");
+		File file2 = new File("C:\\Users\\Christoph\\OneDrive\\newAnalysis\\full_eb.csv");
 		//File file1 = new File("C:\\Users\\Christoph\\OneDrive\\newAnalysis\\experiment_rear_fogLight_random\\invariantsPruned1.txt");
 		//File file2 = new File("C:\\Users\\Christoph\\OneDrive\\newAnalysis\\experiment_rear_fogLight_random\\invariantsPruned2.txt");
 		

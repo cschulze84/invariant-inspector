@@ -432,6 +432,41 @@ public class Invariant implements Comparable<Invariant> {
 
 		return data;
 	}
+	
+	public static Invariant parseCSV(String line, String[] headerList) {
+		List<InvariantValue> inputs = new ArrayList<>();
+		List<InvariantValue> outputs = new ArrayList<>();
+		Invariant invariant = new Invariant();
+		String[] lineSplit = line.split(",");
+		int i = 0;
+		boolean lhs = true;
+		
+		for (String header : headerList) {
+			if(header.equals("#IMPLICATION")){
+				lhs = false;
+				i++;
+				continue;
+			}
+			if(!lineSplit[i].isEmpty()){
+				if(lhs){
+					InvariantValue value = new InvariantValue();
+					value.setName(header);
+					value.setValue(lineSplit[i]);
+					inputs.add(value);
+				}
+				else{
+					InvariantValue value = new InvariantValue();
+					value.setName(header);
+					value.setValue(lineSplit[i]);
+					outputs.add(value);
+				}
+			}
+			i++;
+		}
+		invariant.setInputs(inputs);
+		invariant.setOutputs(outputs);
+		return invariant;
+	}
 
 	private static List<InvariantValue> parseValues(String valuesString) {
 		List<InvariantValue> values = new ArrayList<>();
@@ -495,4 +530,6 @@ public class Invariant implements Comparable<Invariant> {
 		}
 		return true;
 	}
+
+
 }
